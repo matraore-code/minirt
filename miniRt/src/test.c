@@ -6,11 +6,11 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 17:45:45 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/03 05:45:39 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/11 05:28:51 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "canvas/canvas.h"
+#include "minirt.h"
 #include <fcntl.h>
  
 

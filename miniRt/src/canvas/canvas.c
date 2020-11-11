@@ -6,12 +6,12 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 03:34:19 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/03 10:36:23 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/11 05:18:54 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "canvas.h"
-#include <stdlib.h>
 
 t_canvas createCanvas(int w, int h)
 {

@@ -6,11 +6,12 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 05:50:23 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/03 10:51:29 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/11 05:17:42 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tuples.h"
+
 
 const double epsilone = 0.00001;
 
@@ -19,7 +20,7 @@ t_tuple create_tuple(double x, double y, double z,  double w)
     t_tuple tuple;
 
     tuple.x = x;
-    tuple.y = x;
+    tuple.y = y;
     tuple.z = z;
     tuple.w = w; 
     

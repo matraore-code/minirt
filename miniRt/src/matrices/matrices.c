@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 10:38:18 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/03 11:35:26 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/11 05:27:03 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,28 +236,28 @@ void matrix_4x4_debug(t_matrice M)
     }
 }
 
-void matrix_debug(t_matrice M)
-{
-    int i;
-    int j;
+// void matrix_debug(t_matrice M)
+// {
+//     int i;
+//     int j;
 
-    j = 0;
-    printf("\n-----------------------------------------------\n");
-    while (j < M->n_rows)
-    {
-        i = 0;
-        printf(" | ");
-        while (i < M->n_columns)
-        {
-            printf("%f", get_cell(M, i, j));
-            //printf("%f", M->d[j][i]);
-            printf(" | ");
-            i++;
-        }
-        printf("\n-----------------------------------------------\n");
-        j++;
-    }
-}
+//     j = 0;
+//     printf("\n-----------------------------------------------\n");
+//     while (j < M->n_rows)
+//     {
+//         i = 0;
+//         printf(" | ");
+//         while (i < M->n_columns)
+//         {
+//             printf("%f", get_cell(M, i, j));
+//             //printf("%f", M->d[j][i]);
+//             printf(" | ");
+//             i++;
+//         }
+//         printf("\n-----------------------------------------------\n");
+//         j++;
+//     }
+// }
 
 t_matrice identity_matrix(void)
 {
@@ -472,52 +472,39 @@ t_tuple matrix_multiply_by_tuple (t_matrice M, t_tuple p)
     return (t);
 }
 
-
-int main()
+t_tuple chaining_transformation (t_tuple pt, t_matrice A, t_matrice B, t_matrice C)
 {
-    t_matrice matr;
-    t_matrice matr1;
-    t_matrice matr2;
-    t_matrice matr3;
-    matr3 = matrice(2, 2);
-    matr1 = matrice(4, 4);
-    matr = matrice(4, 4);
-    matr2 = matrice(4, 4);
-    fill_matrice(matr3, 1);
-    fill_matrice(matr, 1);
-    fill_matrice(matr1, 2);
-    
-    matr3->d[1][0] = 12;
-    double x;
-    x = matrix_2x2_determinant(matr3);
-    printf("%f", x);
-    // for(int i = 0; i < 4; i++)
-    // {
-    //     for(int j = 0; j < 4; j++)
-    //     {
-    //         printf("%.2f ",matr->d[i][j]);
-    //     }
-    //     printf("\n");
-    // }
-    //  printf("\n");
-    // for(int x = 0; x < 4; x++)
-    // {
-    //     for(int y = 0; y < 4; y++)
-    //     {
-    //         printf("%.2f ",matr1->d[x][y]);
-    //     }
-    //     printf("\n");
-    // }
-    // printf("\n");
-    // matr2 = matrix_multiply(matr, matr1);
+    t_matrice T;
+    t_matrice P;
 
-    // for(int p = 0; p < 4; p++)
-    // {
-    //     for(int l = 0; l < 4; l++)
-    //     {
-    //         printf("%.2f ",matr2->d[p][l]);
-    //     }
-    //     printf("\n");
-    // }
-    return 0;
+    T = matrix_multiply(B, A);
+    P = matrix_multiply(C, T); 
+    return (matrix_multiply_by_tuple(P, pt));
 }
+
+
+// int main()
+// {
+//     t_matrice matr;
+//     t_matrice matr1;
+//     t_matrice matr2;
+//     t_tuple k;
+//     t_tuple c;
+//     t_tuple d;
+//     t_tuple e;
+    
+//     //matr = scaling(-1, 1, 1);
+//     matr = shearing(0, 1, 0, 0, 0, 0);
+//     matr1 = inverse(rotation_x(PI / 4));
+//     matr2 = rotation_x(PI / 2);
+//     k = matrix_multiply_by_tuple(matr1, point(0, 1, 0));
+//     c = matrix_multiply_by_tuple(matr2, point(0, 1, 0));
+//     d = matrix_multiply_by_tuple(matr, point(2, 3, 4));
+//     e = chaining_transformation(point(1, 0, 1), rotation_x(PI / 2), scaling(5, 5, 5), translation(10 , 5, 7));
+    
+//     printf(" k(%.2f %.2f %.2f %.2f)\n", k.x, k.y, k.z, k.w);
+//     printf(" c(%.2f %.2f %.2f %.2f)\n", c.x, c.y, c.z, c.w);
+//     printf(" d(%.2f %.2f %.2f %.2f)\n", d.x, d.y, d.z, d.w);
+//     printf(" e(%.2f %.2f %.2f %.2f)", e.x, e.y, e.z, e.w);
+//     return 0;
+// }

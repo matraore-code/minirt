@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 10:38:28 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/03 10:38:29 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/11 05:19:48 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "stdlib.h"
 #include "../tuples/tuples.h"
 #include "../utils/tools/tools.h"
+
 
 
 
@@ -81,4 +82,29 @@ t_matrice tup_to_matrix (t_tuple t);
 t_tuple matrix_to_tup (t_matrice M);
 
 t_tuple matrix_multiply_by_tuple (t_matrice M, t_tuple p);
+
+#define PI 3.141593
+
+t_matrice translation (int x, int y, int z);
+
+t_matrice scaling (int x, int y, int z);
+
+/*
+** rotation around the x axis
+*/
+t_matrice rotation_x (double degree);
+
+/*
+**  rotation around the y axis 
+*/
+
+t_matrice rotation_y (double degree);
+
+/*
+**  rotation around the z axis 
+*/
+
+t_matrice rotation_z (double degree);
+
+t_matrice shearing (int x_y, int x_z, int y_x, int y_z, int z_x, int z_y);
 #endif

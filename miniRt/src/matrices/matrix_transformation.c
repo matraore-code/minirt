@@ -6,12 +6,13 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 10:38:39 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/03 10:38:40 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/11 05:27:22 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "matrix_transformation.h"
+//#include "matrix_transformation.h"
+#include "matrices.h"
 
 t_matrice translation (int x, int y, int z)
 {
@@ -82,6 +83,19 @@ t_matrice shearing (int x_y, int x_z, int y_x, int y_z, int z_x, int z_y)
     m->d[1][2] = y_z;
     m->d[2][0] = z_x;
     m->d[2][1] = z_y;
-    matrix_debug (m);
     return (m);
 }
+
+
+// int main()
+// {
+//     //t_matrice matr;
+//     t_tuple k;
+//     t_tuple c;
+    
+//     //matr = scaling(-1, 1, 1);
+//     k = point(2, 3, 4);
+//     c = matrix_multiply_by_tuple(scaling(-1, 1, 1), k);
+//     printf("%f %f %f %f", c.x, c.y, c.z, c.w);
+//     return 0;
+// }

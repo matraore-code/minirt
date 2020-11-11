@@ -6,19 +6,17 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 02:00:03 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/03 10:31:38 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/11 05:25:38 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLES_H
 # define TUPLES_H
-
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
 #include "../utils/libft/libft.h"
 #include "../utils/tools/tools.h"
-
 
 
 typedef struct tuples {
