@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rays.h                                             :+:      :+:    :+:   */
+/*   sphere_tools.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/11 05:44:10 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/12 04:26:22 by matraore         ###   ########.fr       */
+/*   Created: 2020/11/12 02:51:05 by matraore          #+#    #+#             */
+/*   Updated: 2020/11/12 05:12:39 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _RAYS_H
-# define _RAYS_H
+#ifndef _SPHERE_TOOLS_H
+# define _SPHERE_TOOLS_H
 
 #include "stdio.h"
 #include "stdlib.h"
-#include "../matrices/matrices.h"
-#include "../canvas/canvas.h"
+#include "math.h"
+#include "../tuples/tuples.h"
+#include "../rays/rays.h"
 
 static int id;
 
+typedef struct sphere
+{
+  t_tuple origine;
+  int rayon;
+  int id_u;
+}t_sphere;
 
 
-//the origine is a point and direction is a vector
-typedef struct rays{
-    t_tuple origine;
-    t_tuple direction;  
-}t_rays;
 
+typedef struct intersect{
+    double a;
+  double b;
+  double c;
+  double dis;
+  double t1;
+  double t2;
+}t_inter;
 
-t_rays create_ray(t_tuple ori, t_tuple dir);
-t_tuple position_point(t_rays r, double t);
-
+t_sphere new_sphere(double r, t_tuple pt);
+t_inter  discriminant(t_rays r, t_tuple origine_sphere);
+double *intersect(t_rays r, t_sphere s);
 
 #endif

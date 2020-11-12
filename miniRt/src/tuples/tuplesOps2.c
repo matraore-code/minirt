@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 02:06:09 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/11 05:18:10 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/12 03:31:40 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_tuple normalizeVector(t_tuple vect)
     return (unitVect);
 }
 
+//dot product
 double scalarTuples(t_tuple a, t_tuple b)
 {
     double c;
