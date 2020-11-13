@@ -6,22 +6,11 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 03:04:36 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/13 03:48:14 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/13 05:25:17 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersect_tools.h"
-
-t_sphere new_sphere(double r, t_tuple pt)
-{
-    t_sphere sph;
-
-    sph.origine = pt;
-    sph.rayon = r;
-    sph.id_u = id;
-    id++;
-    return (sph);
-}
 
 //sphere_to_ray is the distance between sphere and the origine of sphere
 t_inter  discriminant(t_rays r, t_tuple origine_sphere)
@@ -47,32 +36,43 @@ double  *intersect_tools(t_rays r, t_object obj)
   delta = discriminant(r, obj.s.origine);
   t = tools_malloc(sizeof(double) * 3);
   if (delta.dis < 0)
-    return(0);
+  {
+      tools_free(t, (sizeof(double) *3));
+       return(0);
+  } 
   else
   {
     x = (-delta.b - sqrt(delta.dis));
     y = (-delta.b + sqrt(delta.dis));
     t[0] = x / (2 * delta.a);
     t[1] = y / (2 * delta.a);
-
+    if(t[1] == t[0])
+        t[3] = 1;
+    else
+        t[3] = 2;
   }
-    return (t);
-
+  return (t);
 }
+
 
 // double  *intersections(double t1, double t2)
 // {
 //     t_intersect i;
 //     t_rays r;
-//     double i1;
-//     double i2;
 //     double *t;
     
 //     t = tools_malloc(sizeof(double) * 3);
 //     t = intersect_tools(r, i.obj);
-    
+//     if(t != NULL)
+//     {
+//         if(t1 == t[0] && t2 == t[1] && t1 != t2)
+//             t[3] = 2;
+//         else if (t1 == t[0] && t2 == t[1] && t1 == t2)
+//             t[3] = 1;
+//         return (t);    
+//     }
+//     return (0);  
 // }
-
 
 
 int     main(int argc, char *argv[]) 
@@ -89,8 +89,14 @@ int     main(int argc, char *argv[])
   r = create_ray(point(0, 0, -5), vector(0, 0, 1));
   p.s = new_sphere(2, a);
   delt = intersect_tools(r, p);
-  // t = intersect();
-    printf("%f | %f", delt[0], delt[1]);
+  if(delt != NULL)
+  {
+      printf("%f | %f", delt[0], delt[1]);
+  }
+  else {
+      printf("Pas d'intersetion");
+  }
+    
 
     return (0);
 }

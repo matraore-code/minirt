@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/12 02:51:05 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/13 02:59:35 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/13 04:42:26 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,7 @@ typedef struct sphere
   int id_u;
 }t_sphere;
 
-
-
-typedef struct intersect{
-    double a;
-  double b;
-  double c;
-  double dis;
-  double t1;
-  double t2;
-}t_inter;
-
 t_sphere new_sphere(double r, t_tuple pt);
-t_inter  discriminant(t_rays r, t_tuple origine_sphere);
-double *intersect_tools(t_rays r, t_sphere s);
+
 
 #endif
