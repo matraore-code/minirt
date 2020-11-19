@@ -56,7 +56,7 @@ double  *intersection_points (t_rays r, t_object obj)
 
 double  *intersections(t_intersect i1, t_intersect i2)
 {
-    t_inter delta;git 
+    t_inter delta;
     double *xs;
     
     xs = tools_malloc(sizeof(double) * 3);
@@ -74,7 +74,7 @@ double  *intersections(t_intersect i1, t_intersect i2)
       else
         delta.t[3] = 2;
     }
-    return (xs);  
+    return (xs);
 }
 
 
@@ -97,7 +97,7 @@ int     main(int argc, char *argv[])
       printf("%f | %f", delt[0], delt[1]);
   }
   else {
-      printf("Pas de point d'intersetion");
+      printf("Pas de point d'intersection");
   }
     
 
