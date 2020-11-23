@@ -39,14 +39,16 @@ typedef struct object
 
 typedef struct intersect
 {
-    t_object obj;//for the object 
+    //t_object obj;//for the object
+    t_sphere s; 
     double t;
     
 }t_intersect;
 
 t_inter  discriminant(t_rays r, t_tuple origine_sphere);
 double *intersection_points(t_rays r, t_object obj);
-double  *intersections(double t1, double t2);
+double  *intersections(t_intersect i1, t_intersect i2);
+t_intersect intersection(double j, t_sphere sp);
 t_inter  discriminant(t_rays r, t_tuple origine_sphere);
 t_sphere new_sphere(double r, t_tuple pt);
 
