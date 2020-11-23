@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 03:03:36 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/19 13:19:51 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/23 20:25:08 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,29 @@
 #include "../rays/rays.h"
 #include "../sphere/sphere_tools.h"
 
+typedef enum { false, true } bool;
 
-
-typedef struct inter{
-  double a;
-  double b;
-  double c;
-  double dis;
-  double *t;
-}t_inter;
 
 typedef struct object
 {
     t_sphere s;
     
 }t_object;
+
+typedef struct xs_val
+{
+  double count;
+  double *xs;
+  t_object obj;
+}xs_val;
+
+typedef struct inter{
+  double a;
+  double b;
+  double c;
+  double dis;
+  double *xs;
+}t_inter;
 
 
 typedef struct intersect

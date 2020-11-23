@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/13 03:04:36 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/19 13:24:45 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/23 20:11:54 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,17 @@ double *intersection_points(t_rays r, t_object obj)
     return (0);
   else
   {
-    delta.t = tools_malloc(sizeof(double) * 4);
+    delta.xs = tools_malloc(sizeof(double) * 4);
     x = (-delta.b - sqrt(delta.dis));
     y = (-delta.b + sqrt(delta.dis));
-    delta.t[0] = x / (2 * delta.a);
-    delta.t[1] = y / (2 * delta.a);
-    if (delta.t[1] == delta.t[0])
-      delta.t[3] = 1;
+    delta.xs[0] = x / (2 * delta.a);
+    delta.xs[1] = y / (2 * delta.a);
+    if (delta.xs[1] == delta.xs[0])
+      delta.xs[3] = 1;
     else
-      delta.t[3] = 2;
+      delta.xs[3] = 2;
   }
-  return (delta.t);
+  return (delta.xs);
 }
 
 t_intersect intersection(double j, t_sphere sp)
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
   t_intersect i2;
 
   a = point(0, 0, 0);
-  r = create_ray(point(0, 0.5, 1), vector(0, 0, 1));
+  r = create_ray(point(0, 0, -5), vector(0, 0, 1));
   p.s = new_sphere(2, a);
   delt = intersection_points(r, p);
   if (delt != NULL)
