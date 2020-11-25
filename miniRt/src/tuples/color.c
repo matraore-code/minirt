@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 02:59:53 by matraore          #+#    #+#             */
-/*   Updated: 2020/11/11 05:17:09 by matraore         ###   ########.fr       */
+/*   Updated: 2020/11/25 03:09:49 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,9 @@ colorVec multipColor(colorVec c, colorVec d)
 colorVec scalarColor(float c, colorVec d)
 {
     return (color(c * d.red, c * d.green, c * d.blue));
+}
+int		color_rgb_to_hex(colorVec c)
+{
+    c = scalarColor(255, c);
+	return ((c.red * 256 * 256) + (c.green * 256) + c.blue);
 }
