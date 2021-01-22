@@ -1,40 +1,40 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: matraore <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/11 04:04:27 by matraore          #+#    #+#             */
-/*   Updated: 2020/12/11 06:19:28 by matraore         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "includes/main.h"
 
-#include "tools/tools.h"
-#include "tuples/tuples.h"
-#include "matrix/matrix.h"
-#include <stdio.h>
-
-
-int main ()
+void	intialize_mlx(char *filepath, int save)
 {
-	t_tuple *v = create_tuple(4, 5, 6);
-	t_tuple *p = create_tuple(4, 9, 6);
-	t_tuple *s = sub_tuple(v, p);
-	t_tuple *n = normalize_tuple(v);
-	double m = magnetude_tuple(v);
-	printf("v (%.0f %.0f %.0f)\n", v->x, v->y, v->z);
-	printf("%f\n", m);
-	printf("s (%.0f %.2f %.0f)\n", n->x, n->y, n->z);
-	
-	destroy_tuple(&p);
-	if (p == NULL)
-		printf("Memoire liberee\n");
-	t_mat *mat = create_matrix(3);
-	printf("%.2f\n", mat->entries[0]);
-	int i = 0;
-	while (mat->entries[i] != '\0')
-		i++;
-	printf("%d", i);
-	return(0);
+	t_data data;
+
+	data.canvas = get_scene_info(filepath);
+	data.camera_number = 0;
+	if (save == 1)
+	{
+		render(0, &data, 1);
+		return ;
+	}
+	data.id = mlx_init();
+	data.window = mlx_new_window(data.id, data.canvas->width,
+									data.canvas->height, "miniRT");
+	data.image.img = mlx_new_image(data.id, data.canvas->width,
+										data.canvas->height);
+	data.image.addr = (int *)mlx_get_data_addr(data.image.img,
+										&(data.image.bits_per_pixel),
+										&(data.image.line_length),
+										&(data.image.endian));
+	mlx_hook(data.window, 17, 0, close_window, &data);
+	mlx_key_hook(data.window, handle_key, &data);
+	render(0, &data, save);
+	mlx_loop(data.id);
 }
+
+int	main(int ac, char **av)
+{
+	if (ac < 2 || ac > 3)
+		return (42);
+	else
+	{
+		if (ac == 2)
+			intialise_mlx(av[1], 0);
+		else if (ft_strncmp(av[2], "--save", ft_strlen(av[2])) == 0)
+			intialise_mlx(av[1], 1);
+	}
+	return (0);
