@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 14:27:23 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 15:25:40 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/23 16:25:32 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		color_to_int(t_col color)
 	a.comps[2] = color.r;
 	a.comps[1] = color.g;
 	a.comps[0] = color.b;
+	a.comps[3] = 0;
 	return (a.integer);
 }
 

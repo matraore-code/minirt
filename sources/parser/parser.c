@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 14:27:13 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 14:27:14 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:12:05 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	parse_line(t_canvas *canvas, char **array)
 	else if (ft_strncmp(array[0], "sp", 2) == 0)
 		parse_sphere(canvas, array);
 	else if (ft_strncmp(array[0], "pl", 2) == 0)
+		parse_plane(canvas, array);
+	else if (ft_strncmp(array[0], "tr", 2) == 0)
 		parse_plane(canvas, array);
 	else
 		print_error("Identifiant inconnu.");
