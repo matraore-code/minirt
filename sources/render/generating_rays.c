@@ -32,7 +32,7 @@ t_tuple		get_direction(int x, int y, t_canvas *canvas, t_camera camera)
 	double p_x;
 	double p_y;
 
-	fov_coeff = tan((double)camera.fov / 2 * 3.14 / 180);
+	fov_coeff = tan((double)camera.fov / 2 * M_PI / 180);
 	aspect_ratio = (double)canvas->width / (double)canvas->height;
 	p_x = (2 * (x + 0.5) / (double)canvas->width - 1) * aspect_ratio * fov_coeff;
 	p_y = (1 - 2 * (y + 0.5) / (double)canvas->height) * fov_coeff;

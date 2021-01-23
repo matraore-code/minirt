@@ -15,7 +15,7 @@ int		open_file(char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		handle_error(strerror(errno));
+		print_error(strerror(errno));
 	return (fd);
 }
 

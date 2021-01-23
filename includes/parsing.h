@@ -1,12 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/23 10:31:38 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/23 11:10:59 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PARSING_H
 # define PARSING_H
 
 # include <fcntl.h>
 # include <string.h>
 # include <sys/errno.h>
+# include <stdlib.h>
 # include "gnl.h"
-# include "main.h"
 # include "outils.h"
+# include "object.h"
+
+typedef struct	s_camera
+{
+	t_tuple	origin;
+	t_tuple	direction;
+	int		fov;
+}				t_camera;
+
+
+
+typedef enum	e_object_type
+{
+	SPHERE,
+	CUBE,
+	PLANE,
+	LIGHT,
+	TRIANGLE,
+	SQUARE,
+	CYLINDER,
+}				t_otype;
+
+typedef struct	s_object
+{
+	t_otype		type;
+	void		*ptr;
+	t_color	color;
+	double		albedo;
+
+}				t_object;
+
+typedef struct	s_light
+{
+	t_tuple		p0;
+	double		intensity;
+	t_color	color;
+}				t_light;
+
+
+typedef struct	s_canvas
+{
+	t_list		*objects;
+	t_list		*lights;
+	int			width;
+	int			height;
+	double		ambient_intensity;
+	t_color     ambient_color;
+	t_list		*cameras;
+	int			selected_camera;
+}				t_canvas;
 
 t_canvas	*get_scene_info(char *path);
 void	check_canvas(t_canvas *canvas);

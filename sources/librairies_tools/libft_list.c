@@ -1,4 +1,5 @@
 #include "../../includes/outils.h"
+#include <stdlib.h>
 #include <unistd.h>
 
 t_list	*ft_lstlast(t_list *lst)

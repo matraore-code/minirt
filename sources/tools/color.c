@@ -1,12 +1,12 @@
 #include "../../includes/outils.h"
 
-t_color	color_add(t_color a, t_color b)
+t_color	color_add(t_color a, t_color c)
 {
 	t_color	color;
 
-	color.r = fmin(a.r + b.r, 0.99);
-	color.g = fmin(a.g + b.g, 0.99);
-	color.b = fmin(a.b + b.b, 0.99);
+	color.r = fmin(a.r + c.r, 0.99);
+	color.g = fmin(a.g + c.g, 0.99);
+	color.b = fmin(a.b + c.b, 0.99);
 	return (color);
 }
 

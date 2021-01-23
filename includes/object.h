@@ -1,9 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   object.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/23 10:31:10 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/23 11:18:37 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef OBJECTS_H
 # define OBJECTS_H
 
 # include "tuple.h"
 # include "outils.h"
-#include "main.h"
+#include <stdlib.h>
+
+typedef struct	s_ray
+{
+	t_tuple origin;
+	t_tuple direction;
+}   t_ray;
+
+
 
 typedef struct	s_plane
 {
@@ -16,6 +36,8 @@ typedef struct	s_sphere
 	t_tuple	center;
 	double	radius;
 }				t_sphere;
+
+t_ray			create_ray(t_tuple origin, t_tuple direction);
 
 t_plane			*new_plane(t_tuple p0, t_tuple normal);
 t_tuple			get_plane_normal(t_plane plane);

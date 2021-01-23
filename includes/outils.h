@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   outils.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/23 10:31:28 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/23 15:26:58 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef OUTILS_H
 # define OUTILS_H
 
 #include <unistd.h>
-
+#include <math.h>
 
 typedef struct	s_color
 {
@@ -11,6 +23,12 @@ typedef struct	s_color
 	double b;
 }				t_color;
 
+typedef struct	s_col
+{
+	int r;
+	int g;
+	int b;
+}				t_col;
 
 typedef struct	s_list
 {
@@ -31,11 +49,11 @@ void			ft_lstadd_back(t_list **alst, t_list *list);
 t_list			*ft_lstnew(void *content);
 int				ft_lstsize(t_list *lst);
 
-t_color			int_to_color(int color);
-int				color_to_int(t_color color);
+t_col			int_to_color(int color);
+int				color_to_int(t_col color);
 t_color		int_color(int color);
 t_color		from_color(t_color a);
-t_color		color_add(t_color a, t_color b);
+t_color		color_add(t_color a, t_color c);
 t_color		color_mult(t_color a, t_color b);
 t_color		color_coeff(t_color a, double coeff);
 t_color		from_rgb(int r, int g, int b);

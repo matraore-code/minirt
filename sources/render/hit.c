@@ -16,7 +16,7 @@ int		get_obj_hit(t_ray ray, t_object *object, double *t)
 {
 	if (object->type == SPHERE)
 		return (hit_sphere(ray, *(t_sphere *)object->ptr, t));
-	else if (object->type == PLANE)
+	else 
 		return (hit_plane(ray, *(t_plane *)object->ptr, t));
 }
 
@@ -29,7 +29,7 @@ int		hit_objects(t_list *objects, t_ray ray,
 
 	*closest_object = NULL;
 	node = objects;
-	*t_min = HUGE_VAL;
+	*t_min = INFINITY;
 	while (node != NULL)
 	{
 		this_object = node->content;

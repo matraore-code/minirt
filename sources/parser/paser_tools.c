@@ -40,7 +40,7 @@ void	parse_coords(t_tuple *point, char *field, char *errmsg)
 
 	coords = ft_split(field, ',');
 	if (line_fields(coords) != 3)
-		handle_error(errmsg);
+		print_error(errmsg);
 	point->x = ft_atod(coords[0]);
 	point->y = ft_atod(coords[1]);
 	point->z = ft_atod(coords[2]);

@@ -12,7 +12,7 @@ void	parse_sphere(t_canvas *canvas, char **array)
 	parse_coords(&(sphere->center), array[1], "Sphere mal definie");
 	sphere->radius = ft_atod(array[2]) / 2;
 	parse_colors(&(object->color), array[3], "Sphere mal definie");
-	if (!check_color2(object->color))
+	if (!check_color(object->color))
 		print_error("Sphere mal definie");
 	object->type = SPHERE;
 	object->ptr = sphere;

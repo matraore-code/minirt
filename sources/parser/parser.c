@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/23 14:27:13 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/23 14:27:14 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/parsing.h"
 
 void	init_canvas(t_canvas *canvas)
@@ -50,7 +62,7 @@ void	parse_line(t_canvas *canvas, char **array)
 }
 
 
-t_canvas	*get_canavs_info(char *path)
+t_canvas	*get_scene_info(char *path)
 {
 	int		fd;
 	int		ret;

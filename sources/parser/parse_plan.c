@@ -14,7 +14,7 @@ void	parse_plane(t_canvas *canvas, char **array)
 	parse_coords(&plane->normal, array[2], "plan mal definie");
 	normalize_vector(&plane->normal);
 	parse_colors(&object->color, array[3], "plan mal definie");
-	if (!check_color2(object->color))
+	if (!check_color(object->color))
 		print_error("plan mal definie");
 	object->type = PLANE;
 	object->ptr = plane;
