@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:30:41 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 15:52:39 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/24 09:26:08 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ t_hit		create_hit(t_tuple hit_point, t_tuple hit_normal,
 									t_object *closest_object, t_ray ray);
 t_color		mix_colors(t_light light, double d, t_hit hit_point);
 double			spec_coeff(t_light light, t_hit hit_point);
-t_color		specular(t_light light, t_hit hit_point);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:31:38 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 18:16:36 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/24 08:01:22 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,9 @@ void	parse_coordinates(t_tuple *point, char *line, int *i, int *move);
 void	parse_color(t_object *object, char *line, int *i, int *move);
 int		open_file(char *path);
 void	print_error(char *err);
+void	parse_cylindre(t_canvas *canvas, char **array);
+void	parse_square(t_canvas *canvas, char **array);
+void	parse_triangle(t_canvas *canvas, char **array);
 void	parse_sphere(t_canvas *canvas, char **array);
 void	parse_plane(t_canvas *canvas, char **array);
 void	parse_resolution(t_canvas *canvas, char **array);

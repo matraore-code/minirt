@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_triangle.c                                   :+:      :+:    :+:   */
+/*   parse_cylindre.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:13:53 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 07:31:00 by matraore         ###   ########.fr       */
+/*   Created: 2021/01/24 07:43:24 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/24 07:55:26 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-void	parse_triangle(t_canvas *canvas, char **array)
+void	parse_cylindre(t_canvas *canvas, char **array)
 {
 	t_object	*object;
-	t_triangle	*triangle;
+	t_cylindre	*cylindre;
 
 	if (line_fields(array) != 5)
-		print_error("Triangle mal definie");
+		print_error("Cylindre mal definie");
 	object = malloc(sizeof(t_object));
-	triangle = malloc(sizeof(t_triangle));
-	parse_coords(&(triangle->c1), array[1], "Triangle mal definie");
-	parse_coords(&(triangle->c2), array[2], "Triangle mal definie");
-	parse_coords(&(triangle->c3), array[3], "Triangle mal definie");
-	parse_colors(&(object->color), array[4], "Triangle mal definie");
+	cylindre = malloc(sizeof(t_cylindre));
+	parse_coords(&(cylindre->pos), array[1], "Cylindre mal definie");
+    parse_coords(&(cylindre->vector), array[2], "Cylindre mal definie");
+    normalize_vector(&(cylindre->vector));
+	cylindre->size = ft_atod(array[4]);
+    cylindre->height = ft_atod(array[5]);
+	parse_colors(&(object->color), array[3], "Cylindre mal definie");
 	if (!check_color(object->color))
-		print_error("Triangle mal definie");
-	object->type = TRIANGLE;
-	object->ptr = triangle;
+		print_error("Cylindre mal definie");
+	object->type = CYLINDER;
+	object->ptr = cylindre;
 	ft_lstadd_back(&(canvas->objects), ft_lstnew(object));
 }

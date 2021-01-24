@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 14:27:13 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 18:12:05 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/24 07:59:35 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_canvas(t_canvas *canvas)
 
 void	parse_line(t_canvas *canvas, char **array)
 {
-	if (line_fields(array) == 0)
+	if (line_fields(array) == 0 || ft_strncmp(array[0], "#", 1) == 0)
 		return ;
 	else if (line_fields(array) < 2)
 		print_error("Element de la canavs inconnue");
@@ -58,6 +58,10 @@ void	parse_line(t_canvas *canvas, char **array)
 	else if (ft_strncmp(array[0], "pl", 2) == 0)
 		parse_plane(canvas, array);
 	else if (ft_strncmp(array[0], "tr", 2) == 0)
+		parse_plane(canvas, array);
+	else if (ft_strncmp(array[0], "cy", 2) == 0)
+		parse_plane(canvas, array);
+	else if (ft_strncmp(array[0], "sq", 2) == 0)
 		parse_plane(canvas, array);
 	else
 		print_error("Identifiant inconnu.");

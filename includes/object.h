@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:31:10 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 11:18:37 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/24 09:26:16 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,39 @@ typedef struct	s_ray
 	t_tuple direction;
 }   t_ray;
 
-
-
 typedef struct	s_plane
 {
 	t_tuple p0;
 	t_tuple normal;
 }				t_plane;
 
+typedef struct s_triangle
+{
+	t_tuple c1;
+	t_tuple c2;
+	t_tuple c3;
+}  t_triangle;
+
 typedef struct	s_sphere
 {
 	t_tuple	center;
 	double	radius;
 }				t_sphere;
+
+typedef struct s_cylinder
+{
+	t_tuple pos;
+	t_tuple vector;
+	double size;
+	double height;
+}  t_cylindre;
+
+typedef struct s_square
+{
+	t_tuple center;
+	t_tuple vector;
+	double size;
+} t_square;
 
 t_ray			create_ray(t_tuple origin, t_tuple direction);
 
@@ -49,5 +69,10 @@ t_sphere		*new_sphere(t_tuple center, double radius);
 t_tuple			get_sphere_normal(t_tuple point, t_sphere sphere);
 int				hit_sphere(t_ray ray, t_sphere sphere, double *t);
 int				get_roots(double *t0, double *t1, t_ray ray, t_sphere sphere);
+t_tuple		get_triangle_normal(t_triangle triangle);
+
+
+
+
 
 #endif

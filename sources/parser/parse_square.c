@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_triangle.c                                   :+:      :+:    :+:   */
+/*   parse_square.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 18:13:53 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 07:31:00 by matraore         ###   ########.fr       */
+/*   Created: 2021/01/24 07:51:52 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/24 07:57:14 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-void	parse_triangle(t_canvas *canvas, char **array)
+void	parse_square(t_canvas *canvas, char **array)
 {
 	t_object	*object;
-	t_triangle	*triangle;
+	t_square	*square;
 
-	if (line_fields(array) != 5)
-		print_error("Triangle mal definie");
+	if (line_fields(array) != 4)
+		print_error("square mal definie");
 	object = malloc(sizeof(t_object));
-	triangle = malloc(sizeof(t_triangle));
-	parse_coords(&(triangle->c1), array[1], "Triangle mal definie");
-	parse_coords(&(triangle->c2), array[2], "Triangle mal definie");
-	parse_coords(&(triangle->c3), array[3], "Triangle mal definie");
-	parse_colors(&(object->color), array[4], "Triangle mal definie");
+	square = malloc(sizeof(t_square));
+	parse_coords(&(square->center), array[1], "square mal definie");
+    parse_coords(&(square->vector), array[2], "square mal definie");
+    normalize_vector(&(square->vector));
+	square->size = ft_atod(array[3]);
+	parse_colors(&(object->color), array[4], "square mal definie");
 	if (!check_color(object->color))
-		print_error("Triangle mal definie");
-	object->type = TRIANGLE;
-	object->ptr = triangle;
+		print_error("square mal definie");
+	object->type = SQUARE;
+	object->ptr = square;
 	ft_lstadd_back(&(canvas->objects), ft_lstnew(object));
 }
