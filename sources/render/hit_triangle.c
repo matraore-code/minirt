@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hit_triangle.c                                     :+:      :+:    :+:   */
+/*   hit_triangle.c3                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 08:09:48 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 09:49:43 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/24 14:29:49 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/object.h"
-#define EPSILON 0.000001
+#include <stdio.h>
+
 
 t_triangle *new_triangle(t_tuple x, t_tuple y, t_tuple z)
 {
@@ -24,26 +25,50 @@ t_triangle *new_triangle(t_tuple x, t_tuple y, t_tuple z)
     return (triangle);
 }
 
-t_tuple    local_normal_at(t_triangle triangle, t_tuple point)
+int			step2(t_triangle triangle, t_tuple p, t_tuple n)
 {
-    t_tuple normal;
+	t_tuple	c;
+	t_tuple	edge;
+	t_tuple	vp;
 
-    normal = get_triangle_normal(triangle);
-    return (normal);
+	edge = substract(triangle.c2, triangle.c1);
+	vp = substract(p, triangle.c1);
+	c = cross_product(edge, vp);
+	if (dot_product(n, c) < 0)
+		return (0);
+	edge = substract(triangle.c3 , triangle.c2);
+	vp = substract(p, triangle.c2);
+	c = cross_product(edge, vp);
+	if (dot_product(n, c) < 0)
+		return (0);
+	edge = substract(triangle.c1, triangle.c3);
+	vp = substract(p, triangle.c3);
+	c = cross_product(edge, vp);
+	if (dot_product(n, c) < 0)
+		return (0);
+	return (1);
 }
+
 
 int     hit_triangle(t_ray ray, t_triangle triangle, double *t)
 {
-    t_tuple side1;
-    t_tuple side2;
-    t_tuple e2;
-    double det;
-    
-    side1 = substract(triangle.c2, triangle.c1);
-    side2 = substract(triangle.c3, triangle.c1);
-    e2 = cross_product(ray.direction, side2);
-    det = dot_product(side1, e2);
-    if (det < EPSILON)
-        return (0);
-    return (1);
+	t_tuple a;
+	t_tuple b;
+	t_tuple	n;
+    double ndotraydir;
+	double	d;
+	t_tuple	p;
+
+    a = substract(triangle.c2, triangle.c1);
+	b = substract(triangle.c3, triangle.c1);
+	n = cross_product(a, b);
+	ndotraydir = dot_product(n, ray.direction);
+	if (fabs(ndotraydir) < EPSILON)
+		return (0);
+    d = dot_product(n, triangle.c1);
+	*t = (dot_product(n,  ray.origin)) / ndotraydir;
+	if (*t < 0)
+		return (0);
+	p = tuple_add(ray.origin, tuple_multiply(ray.direction, *t));
+	return (step2(triangle, p, n));
 }

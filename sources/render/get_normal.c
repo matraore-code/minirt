@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 11:21:04 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 09:05:16 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/24 18:12:25 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,13 @@ t_tuple	get_plane_normal(t_plane plane)
 	t_tuple ret;
 
 	ret = plane.normal;
+	return (ret);
+}
+
+t_tuple		get_square_normal(t_square square)
+{
+	t_tuple ret;
+
+	ret = square.vector;
 	return (ret);
 }

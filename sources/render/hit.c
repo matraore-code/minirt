@@ -16,8 +16,12 @@ int		get_obj_hit(t_ray ray, t_object *object, double *t)
 {
 	if (object->type == SPHERE)
 		return (hit_sphere(ray, *(t_sphere *)object->ptr, t));
-	else 
+	else if (object->type == PLANE)
 		return (hit_plane(ray, *(t_plane *)object->ptr, t));
+	else if (object->type == TRIANGLE)
+		return (hit_triangle(ray, *(t_triangle *)object->ptr, t));
+	else 
+		return (hit_square(ray, *(t_square *)object->ptr, t));
 }
 
 int		hit_objects(t_list *objects, t_ray ray,

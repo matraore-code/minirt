@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:31:10 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 09:26:16 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/24 18:23:39 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "tuple.h"
 # include "outils.h"
 #include <stdlib.h>
+#define EPSILON 0.000001
 
 typedef struct	s_ray
 {
@@ -70,7 +71,9 @@ t_tuple			get_sphere_normal(t_tuple point, t_sphere sphere);
 int				hit_sphere(t_ray ray, t_sphere sphere, double *t);
 int				get_roots(double *t0, double *t1, t_ray ray, t_sphere sphere);
 t_tuple		get_triangle_normal(t_triangle triangle);
-
+int     hit_triangle(t_ray ray, t_triangle triangle, double *t);
+int			hit_square(t_ray ray, t_square square, double *t);
+t_tuple		get_square_normal(t_square square);
 
 
 
