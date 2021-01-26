@@ -42,6 +42,18 @@ t_tuple		get_triangle_normal(t_triangle triangle)
 	return (normal);
 }
 
+t_tuple		get_cylindre_normal(t_tuple point, t_cylindre cylinder)
+{
+	t_tuple ctp;
+	t_tuple normal;
+
+	ctp = substract(point, cylinder.pos);
+	normal = substract(ctp, tuple_multiply(cylinder.vector,
+								dot_product(cylinder.vector, ctp)));
+	normalize_vector(&normal);
+	return (normal);
+}
+
 t_tuple	get_plane_normal(t_plane plane)
 {
 	t_tuple ret;

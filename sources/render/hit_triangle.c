@@ -55,17 +55,16 @@ int     hit_triangle(t_ray ray, t_triangle triangle, double *t)
 	t_tuple a;
 	t_tuple b;
 	t_tuple	n;
-    double ndotraydir;
-	double	d;
+    double ndotraydir;qqe3
 	t_tuple	p;
 
     a = substract(triangle.c2, triangle.c1);
 	b = substract(triangle.c3, triangle.c1);
 	n = cross_product(a, b);
+	normalize_vector(&n);
 	ndotraydir = dot_product(n, ray.direction);
 	if (fabs(ndotraydir) < EPSILON)
 		return (0);
-    d = dot_product(n, triangle.c1);
 	*t = (dot_product(n,  ray.origin)) / ndotraydir;
 	if (*t < 0)
 		return (0);
