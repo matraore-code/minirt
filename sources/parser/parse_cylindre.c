@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 07:43:24 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 07:55:26 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/26 10:42:15 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	parse_cylindre(t_canvas *canvas, char **array)
 	t_object	*object;
 	t_cylindre	*cylindre;
 
-	if (line_fields(array) != 5)
-		print_error("Cylindre mal definie");
+	if (line_fields(array) != 6)
+		print_error("le Cylindre mal definie");
 	object = malloc(sizeof(t_object));
 	cylindre = malloc(sizeof(t_cylindre));
 	parse_coords(&(cylindre->pos), array[1], "Cylindre mal definie");

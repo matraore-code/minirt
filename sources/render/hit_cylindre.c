@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 10:16:17 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/26 10:18:59 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:32:09 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,9 @@ int			cyl_get_roots(double *t0, double *t1, t_cylindre cylinder,
 	double	b;
 	double	c;
 
-	a_sqrt = substract(ray.direction,
-								tuple_multiply(cylinder.vector,
-								dot_product(ray.direction, cylinder.vector)));
+	a_sqrt = substract(ray.direction,tuple_multiply(cylinder.vector,dot_product(ray.direction, cylinder.vector)));
 	a = dot_product(a_sqrt, a_sqrt);
-	right = substract(substract(ray.origin, cylinder.pos),
-						tuple_multiply(cylinder.vector,
-							dot_product(substract(ray.origin, cylinder.pos),
-							cylinder.vector)));
+	right = substract(substract(ray.origin, cylinder.pos),tuple_multiply(cylinder.vector,dot_product(substract(ray.origin, cylinder.pos),cylinder.vector)));
 	b = 2 * dot_product(a_sqrt, right);
 	c = dot_product(right, right) - (cylinder.size * cylinder.size);
 	if (!solve_quadratic(create_tuple(a, b, c), t0, t1))

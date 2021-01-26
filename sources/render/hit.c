@@ -22,7 +22,7 @@ int		get_obj_hit(t_ray ray, t_object *object, double *t)
 		return (hit_triangle(ray, *(t_triangle *)object->ptr, t));
 	else if (object->type == CYLINDER)
 		return (hit_cylindre(ray, *(t_cylindre *)object->ptr, t));
-	else if (object->type == SQUARE)
+	else
 		return (hit_square(ray, *(t_square *)object->ptr, t));
 }
 
