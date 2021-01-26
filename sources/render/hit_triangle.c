@@ -55,7 +55,7 @@ int     hit_triangle(t_ray ray, t_triangle triangle, double *t)
 	t_tuple a;
 	t_tuple b;
 	t_tuple	n;
-    double ndotraydir;qqe3
+    double ndotraydir;
 	t_tuple	p;
 
     a = substract(triangle.c2, triangle.c1);

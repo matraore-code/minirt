@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_cylindre.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/26 10:16:17 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/26 10:18:59 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/object.h"
 
 t_cylindre	*new_cylinder(t_tuple p, t_tuple normal, double radius, double height)
@@ -10,18 +22,6 @@ t_cylindre	*new_cylinder(t_tuple p, t_tuple normal, double radius, double height
 	cylinder->size = radius;
 	cylinder->height = height;
 	return (cylinder);
-}
-
-t_tuple		get_cylindre_normal(t_tuple point, t_cylindre cylinder)
-{
-	t_tuple ctp;
-	t_tuple normal;
-
-	ctp = substract(point, cylinder.pos);
-	normal = substract(ctp, tuple_multiply(cylinder.vector,
-										dot_product(cylinder.vector, ctp)));
-	normalize_vector(&normal);
-	return (normal);
 }
 
 void		check_t(double *t, t_cylindre cylinder, t_ray ray)
@@ -61,7 +61,7 @@ int			cyl_get_roots(double *t0, double *t1, t_cylindre cylinder,
 	return (1);
 }
 
-int			intersect_cylindre(t_ray ray, t_cylindre cylinder, double *t)
+int			hit_cylindre(t_ray ray, t_cylindre cylinder, double *t)
 {
 	double t0;
 	double t1;
