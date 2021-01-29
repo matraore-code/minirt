@@ -34,15 +34,9 @@ int			solve_quadratic(t_tuple params, double *x0, double *x1)
 	}
 	else
 	{
-		if (params.y > 0)
-			q = -1 * (params.y + sqrt(discr)) / 2;
-		else
-			q = -1 * (params.y - sqrt(discr)) / 2;
-		*x0 = q / params.y;
-		*x1 = params.z / q;
+		*x0 = ((-1 * params.y) - sqrt(discr)) / (2 * params.x);
+		*x1 = ((-1 * params.y) + sqrt(discr)) / (2 * params.x);
 	}
-	if (*x0 > *x1)
-		swap_doubles(x0, x1);
 	return (1);
 }
 

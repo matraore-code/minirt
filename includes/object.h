@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:31:10 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/26 11:14:40 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/29 12:07:56 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "tuple.h"
 # include "outils.h"
 #include <stdlib.h>
+#include <stdio.h>
 #define EPSILON 0.000001
 
 typedef struct	s_ray

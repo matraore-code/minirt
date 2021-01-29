@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 11:12:49 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/26 10:28:24 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/29 18:06:42 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	main(int argc, char **argv)
 	{
 		if (argc == 2)
 			intialize_mlx(argv[1], 0);
+		else if (argc == 3)
+			initialize_mlx(argv[1], 1);
 	}
 	return (0);
 }

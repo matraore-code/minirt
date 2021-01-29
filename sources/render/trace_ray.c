@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 11:23:32 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 15:53:58 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/26 16:24:04 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,14 @@ t_color	compute_light(t_light light, t_hit hit, t_canvas canvas)
 	light_ray = substract(light.p0, hit.hit_point);
 	normalize_vector(&light_ray);
 	lray = create_ray(tuple_add(hit.hit_point,tuple_multiply(hit.hit_normal, 0.1)), light_ray);
-	if (!hit_objects(canvas.objects, lray, &closest_object, &t)|| t > vector_len(substract(light.p0, hit.hit_point)))
+	if (!hit_objects(canvas.objects, lray, &closest_object, &t) || t > vector_len(substract(light.p0, hit.hit_point)))
 	{
 		dot = fmax(0, dot_product(hit.hit_normal, light_ray));
 	}
 	return (mix_colors(light, dot, hit));
 }
 
-t_color	compute_lights(t_canvas *canvas, t_ray ray, t_object *closest_object,
-																double t_min)
+t_color	compute_lights(t_canvas *canvas, t_ray ray, t_object *closest_object, double t_min)
 {
 	t_tuple		hit_point;
 	t_tuple		hit_normal;
