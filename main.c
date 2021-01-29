@@ -18,6 +18,11 @@ void	intialize_mlx(char *filepath, int save)
 
 	data.canvas = get_scene_info(filepath);
 	data.camera_number = 0;
+	if (save == 1)
+	{
+		render(0, &data, 1);
+		return ;
+	}
 	data.id = mlx_init();
 	data.window = mlx_new_window(data.id, data.canvas->width,data.canvas->height, "RayTracing");
 	data.image.img = mlx_new_image(data.id, data.canvas->width,data.canvas->height);
@@ -36,6 +41,8 @@ int	main(int argc, char **argv)
 	{
 		if (argc == 2)
 			intialize_mlx(argv[1], 0);
+		else if (ft_strncmp(argv[2], "--save", ft_strlen(argv[2])) == 0)
+			initialize_mlx(argv[1], 1);
 	}
 	return (0);
 }
