@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_error.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/29 17:50:11 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/29 17:51:28 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/parsing.h"
+#include <stdio.h>
 
 void	print_error(char *err)
 {
-	write(2, "Error\n", 6);
-	write(2, err, ft_strlen(err));
-	write(2, "\n", 1);
+	printf("Error\n");
+	printf("%s\n", err);
 	exit(-1);
 }
 

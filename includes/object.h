@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:31:10 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 18:23:39 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/29 12:07:56 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "tuple.h"
 # include "outils.h"
 #include <stdlib.h>
+#include <stdio.h>
 #define EPSILON 0.000001
 
 typedef struct	s_ray
@@ -74,8 +75,9 @@ t_tuple		get_triangle_normal(t_triangle triangle);
 int     hit_triangle(t_ray ray, t_triangle triangle, double *t);
 int			hit_square(t_ray ray, t_square square, double *t);
 t_tuple		get_square_normal(t_square square);
-
-
-
-
+t_cylindre	*new_cylinder(t_tuple p, t_tuple normal, double radius, double height);
+void		check_t(double *t, t_cylindre cylinder, t_ray ray);
+int			cyl_get_roots(double *t0, double *t1, t_cylindre cylinder, t_ray ray);
+int			hit_cylindre(t_ray ray, t_cylindre cylinder, double *t);
+t_tuple		get_cylindre_normal(t_tuple point, t_cylindre cylinder);
 #endif

@@ -32,5 +32,6 @@ void	render(int camera_number, t_data *data, int save)
 	cameras_available = ft_lstsize(data->canvas->cameras);
 	data->canvas->selected_camera = camera_number % cameras_available;
 	trace_ray(data, save);
-	mlx_put_image_to_window(data->id, data->window, data->image.img, 0, 0);
+	if (save == 0)
+		mlx_put_image_to_window(data->id, data->window, data->image.img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 14:27:13 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 14:50:26 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/26 11:38:17 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_canvas(t_canvas *canvas)
 void	check_canvas(t_canvas *canvas)
 {
 	if (canvas->cameras == NULL)
-		print_error("la canavs doit avoir au moins une camera.");
+		print_error("le canvas doit avoir au moins une camera.");
 	if (canvas->ambient_color.r < 0 || canvas->ambient_color.g < 0
 	|| canvas->ambient_color.b < 0)
 		print_error("lumiere ambiante incorrect");
@@ -49,7 +49,7 @@ void	parse_line(t_canvas *canvas, char **array)
 		parse_resolution(canvas, array);
 	else if (ft_strncmp(array[0], "A", 1) == 0)
 		parse_ambient(canvas, array);
-	else if (ft_strncmp(array[0], "c", 1) == 0)
+	else if (ft_strncmp(array[0], "c", 1) == 0 && ft_strlen(array[0]) == 1)
 		parse_camera(canvas, array);
 	else if (ft_strncmp(array[0], "l", 1) == 0)
 		parse_light(canvas, array);

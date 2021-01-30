@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 11:12:49 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 15:51:02 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/29 18:06:42 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	intialize_mlx(char *filepath, int save)
 int	main(int argc, char **argv)
 {
 	if (argc < 2 || argc > 3)
-		print_error("Argument invalid");
+		print_error("Arguments invalides");
 	else
 	{
 		if (argc == 2)

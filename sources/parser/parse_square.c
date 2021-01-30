@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/24 07:51:52 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/24 18:18:39 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/27 16:23:07 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	parse_square(t_canvas *canvas, char **array)
 	t_square	*square;
 
 	if (line_fields(array) != 5)
-		print_error(" le square mal definie");
+		print_error(" le   square mal definie");
 	object = malloc(sizeof(t_object));
 	square = malloc(sizeof(t_square));
 	parse_coords(&(square->center), array[1], "square mal definie");
