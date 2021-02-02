@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:48:59 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:49:00 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 10:47:30 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ t_tuple		get_direction(int x, int y, t_canvas *canvas, t_camera camera)
 
 	fov_coeff = tan((double)camera.fov / 2 * M_PI / 180);
 	aspect_ratio = (double)canvas->width / (double)canvas->height;
-	p_x = (2 * (x + 0.5) / (double)canvas->width - 1) * aspect_ratio * fov_coeff;
+	p_x = (2 * (x + 0.5) / (double)canvas->width - 1) *
+		aspect_ratio * fov_coeff;
 	p_y = (1 - 2 * (y + 0.5) / (double)canvas->height) * fov_coeff;
 	return (create_tuple(p_x, p_y, 1));
 }

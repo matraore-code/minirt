@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:49:29 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:49:30 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 10:33:57 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ void	parse_resolution(t_canvas *canvas, char **array)
 	canvas->width = ft_atoi(array[1]);
 	canvas->height = ft_atoi(array[2]);
 }
-

@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:49:41 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:49:42 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/02 10:20:39 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	parse_ambient(t_canvas *canvas, char **array)
 		print_error("La lumiere ambiante est mal declare");
 	canvas->ambient_intensity = ft_atod(array[1]);
 	if (canvas->ambient_intensity < 0 || canvas->ambient_intensity > 1)
-		print_error("l'intenisite de la lumiere ambiante est comprise entyre 0.0 et 1.0");
+		print_error("l'intenisite doit etre dans l'interval [0, 1.0]");
 	parse_colors(&(canvas->ambient_color), array[2],
 					"Format de la couleur incorrect");
 	if (!check_color(canvas->ambient_color))

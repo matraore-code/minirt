@@ -6,14 +6,14 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:49:47 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:49:48 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 10:25:52 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/outils.h"
 #include <stdlib.h>
 
-int		ft_strlen(char *str)
+int				ft_strlen(char *str)
 {
 	int i;
 
@@ -21,6 +21,21 @@ int		ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+void			ft_putstr_fd(char *s)
+{
+	int i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i] != '\0')
+		{
+			ft_putchar_fd(s[i]);
+			i++;
+		}
+	}
 }
 
 static int		count_substrings(char const *s, char c)

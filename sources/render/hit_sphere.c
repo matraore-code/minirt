@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit_sphere.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/31 11:09:26 by matraore          #+#    #+#             */
+/*   Updated: 2021/01/31 11:09:48 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/object.h"
 
 void		swap_doubles(double *a, double *b)
@@ -22,7 +34,6 @@ t_sphere	*new_sphere(t_tuple center, double radius)
 int			solve_quadratic(t_tuple params, double *x0, double *x1)
 {
 	double discr;
-	double q;
 
 	discr = pow(params.y, 2) - 4 * params.x * params.z;
 	if (discr < 0)

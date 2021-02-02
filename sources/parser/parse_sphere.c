@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 18:14:26 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 18:14:27 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/02 10:55:15 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	parse_sphere(t_canvas *canvas, char **array)
 	sphere = malloc(sizeof(t_sphere));
 	parse_coords(&(sphere->center), array[1], "Sphere mal definie");
 	sphere->radius = ft_atod(array[2]) / 2;
+	if (sphere->radius < 0)
+		print_error("le rayon de la sphere doit etre positif");
 	parse_colors(&(object->color), array[3], "Sphere mal definie");
 	if (!check_color(object->color))
 		print_error("Sphere mal definie");

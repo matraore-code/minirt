@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hit.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/01/31 10:52:08 by matraore          #+#    #+#             */
+/*   Updated: 2021/02/02 11:57:37 by matraore         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/main.h"
 
 t_hit		create_hit(t_tuple hit_point, t_tuple hit_normal,
@@ -12,7 +24,21 @@ t_hit		create_hit(t_tuple hit_point, t_tuple hit_normal,
 	return (hit);
 }
 
-int		get_obj_hit(t_ray ray, t_object *object, double *t)
+t_tuple		get_normal(t_tuple point, t_object *object)
+{
+	if (object->type == SPHERE)
+		return (get_sphere_normal(point, *(t_sphere *)object->ptr));
+	else if (object->type == PLANE)
+		return (get_plane_normal(*(t_plane *)object->ptr));
+	else if (object->type == TRIANGLE)
+		return (get_triangle_normal(*(t_triangle *)object->ptr));
+	else if (object->type == SQUARE)
+		return (get_square_normal(*(t_square *)object->ptr));
+	else
+		return (get_cylindre_normal(point, *(t_cylindre *)object->ptr));
+}
+
+int			get_obj_hit(t_ray ray, t_object *object, double *t)
 {
 	if (object->type == SPHERE)
 		return (hit_sphere(ray, *(t_sphere *)object->ptr, t));
@@ -26,7 +52,7 @@ int		get_obj_hit(t_ray ray, t_object *object, double *t)
 		return (hit_square(ray, *(t_square *)object->ptr, t));
 }
 
-int		hit_objects(t_list *objects, t_ray ray,
+int			hit_objects(t_list *objects, t_ray ray,
 									t_object **closest_object, double *t_min)
 {
 	t_list		*node;

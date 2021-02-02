@@ -6,13 +6,25 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:49:55 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:49:56 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 10:24:16 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/outils.h"
 #include <stdlib.h>
 #include <unistd.h>
+
+void	free_list(t_list *head)
+{
+	t_list	*tmp;
+
+	while (head != NULL)
+	{
+		tmp = head;
+		head = head->next;
+		free(tmp);
+	}
+}
 
 t_list	*ft_lstlast(t_list *lst)
 {

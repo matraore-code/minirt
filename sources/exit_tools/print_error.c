@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:50:11 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:51:28 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 10:20:12 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 void	print_error(char *err)
 {
-	printf("Error\n");
-	printf("%s\n", err);
+	ft_putstr_fd("Error");
+	ft_putstr_fd("\n");
+	ft_putstr_fd(err);
+	ft_putstr_fd("\n");
 	exit(-1);
 }
 

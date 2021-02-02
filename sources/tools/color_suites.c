@@ -6,23 +6,16 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 14:27:23 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 16:25:32 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 11:59:43 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/outils.h"
 
-typedef union	u_int_color
-{
-	int				integer;
-	unsigned char	comps[4];
-}				t_int_color;
-
-
 t_col	int_to_color(int col)
 {
 	t_int_color	a;
-	t_col	result;
+	t_col		result;
 
 	a.integer = col;
 	result.r = a.comps[2];
@@ -42,10 +35,10 @@ int		color_to_int(t_col color)
 	return (a.integer);
 }
 
-int			to_int(t_color a)
+int		to_int(t_color a)
 {
 	int		color;
-	t_col this;
+	t_col	this;
 
 	this.r = a.r * 256;
 	this.g = a.g * 256;
@@ -56,7 +49,7 @@ int			to_int(t_color a)
 
 t_color	int_color(int color)
 {
-	t_col		this;
+	t_col	this;
 	t_color	result;
 
 	this = int_to_color(color);

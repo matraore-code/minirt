@@ -6,13 +6,13 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 11:23:32 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/26 16:24:04 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 11:54:24 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/main.h"
 
-t_color	mix_colors(t_light light, double d, t_hit hit)
+t_color		mix_colors(t_light light, double d, t_hit hit)
 {
 	t_color	result;
 	t_color	light_color;
@@ -24,7 +24,7 @@ t_color	mix_colors(t_light light, double d, t_hit hit)
 	return (result);
 }
 
-t_color	compute_light(t_light light, t_hit hit, t_canvas canvas)
+t_color		compute_light(t_light light, t_hit hit, t_canvas canvas)
 {
 	t_object	*closest_object;
 	double		t;
@@ -35,15 +35,18 @@ t_color	compute_light(t_light light, t_hit hit, t_canvas canvas)
 	dot = 0;
 	light_ray = substract(light.p0, hit.hit_point);
 	normalize_vector(&light_ray);
-	lray = create_ray(tuple_add(hit.hit_point,tuple_multiply(hit.hit_normal, 0.1)), light_ray);
-	if (!hit_objects(canvas.objects, lray, &closest_object, &t) || t > vector_len(substract(light.p0, hit.hit_point)))
+	lray = create_ray(tuple_add(hit.hit_point,
+				tuple_multiply(hit.hit_normal, 0.1)), light_ray);
+	if (!hit_objects(canvas.objects, lray, &closest_object, &t)
+			|| t > vector_len(substract(light.p0, hit.hit_point)))
 	{
 		dot = fmax(0, dot_product(hit.hit_normal, light_ray));
 	}
 	return (mix_colors(light, dot, hit));
 }
 
-t_color	compute_lights(t_canvas *canvas, t_ray ray, t_object *closest_object, double t_min)
+t_color		compute_lights(t_canvas *canvas, t_ray ray,
+		t_object *closest_object, double t_min)
 {
 	t_tuple		hit_point;
 	t_tuple		hit_normal;
@@ -55,7 +58,8 @@ t_color	compute_lights(t_canvas *canvas, t_ray ray, t_object *closest_object, do
 	hit_point = tuple_add(ray.origin, tuple_multiply(ray.direction, t_min));
 	hit_normal = get_normal(hit_point, closest_object);
 	if (dot_product(ray.direction, hit_normal) > 0)
-		hit_normal = substract(create_tuple(0, 0, 0), tuple_multiply(hit_normal, 1));
+		hit_normal = substract(create_tuple(0, 0, 0),
+				tuple_multiply(hit_normal, 1));
 	node = canvas->lights;
 	while (node != NULL)
 	{
@@ -72,39 +76,45 @@ int			get_color(t_canvas *canvas, t_ray ray)
 {
 	double		t_min;
 	t_object	*n_object;
-	t_color	result;
-	t_color	ambient_color;
+	t_color		result;
+	t_color		ambient_color;
 
 	if (hit_objects(canvas->objects, ray, &n_object, &t_min))
 	{
-		ambient_color = color_coeff(canvas->ambient_color,canvas->ambient_intensity);
-		result = color_add(color_mult(n_object->color, ambient_color),compute_lights(canvas, ray, n_object, t_min));
+		ambient_color = color_coeff(canvas->ambient_color,
+				canvas->ambient_intensity);
+		result = color_add(color_mult(n_object->color, ambient_color),
+				compute_lights(canvas, ray, n_object, t_min));
 		return (to_int(result));
 	}
 	else
 		return (0);
 }
 
-void	trace_ray(t_data *data, int save)
+void		trace_ray(t_data *data, int save)
 {
-	int		x;
-	int		y;
-	int		color;
-	char	*dest;
-
+	int				x;
+	int				y;
+	int				color;
+	char			*dest;
+	t_pixel			**buffer;
 
 	x = 0;
 	y = 0;
+	buffer = create_buffer(data->canvas->height, data->canvas->width);
 	while (y < data->canvas->height)
 	{
 		x = 0;
 		while (x < data->canvas->width)
 		{
 			color = get_color(data->canvas, ray_to_pixel(x, y, data->canvas));
-			dest = data->image.addr + (y * data->image.line_length + x * (data->image.bits_per_pixel / 8));
-			*(unsigned int*)dest = color;
+			if (save == 1)
+				buffer[y][x] = pixel_to_int(color);
+			else
+				dest = parse_dest(color, x, y, data);
 			x++;
 		}
 		y++;
 	}
+	free_and_saving(buffer, data, save);
 }

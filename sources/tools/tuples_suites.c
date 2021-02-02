@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:48:21 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:48:22 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 12:03:32 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_tuple	tuple_multiply(t_tuple vec1, double x)
 	return (result);
 }
 
-t_tuple		multiply_by_matrix(t_tuple p, t_matrix m)
+t_tuple	multiply_by_matrix(t_tuple p, t_matrix m)
 {
 	t_tuple res;
 

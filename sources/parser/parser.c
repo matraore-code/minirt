@@ -6,13 +6,30 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 14:27:13 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/26 11:38:17 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 10:43:58 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parsing.h"
 
-void	init_canvas(t_canvas *canvas)
+void		free_all(char *line, char **array)
+{
+	int i;
+
+	i = 0;
+	if (line != NULL)
+	{
+		free(line);
+	}
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
+void		init_canvas(t_canvas *canvas)
 {
 	canvas->cameras = NULL;
 	canvas->lights = NULL;
@@ -24,7 +41,7 @@ void	init_canvas(t_canvas *canvas)
 	canvas->ambient_color.b = -1;
 }
 
-void	check_canvas(t_canvas *canvas)
+void		check_canvas(t_canvas *canvas)
 {
 	if (canvas->cameras == NULL)
 		print_error("le canvas doit avoir au moins une camera.");
@@ -39,9 +56,9 @@ void	check_canvas(t_canvas *canvas)
 		canvas->height = 1440;
 }
 
-void	parse_line(t_canvas *canvas, char **array)
+void		parse_line(t_canvas *canvas, char **array)
 {
-	if (line_fields(array) == 0 || ft_strncmp(array[0], "#", 1) == 0)
+	if (line_fields(array) == 0)
 		return ;
 	else if (line_fields(array) < 2)
 		print_error("Element de la canavs inconnue");
@@ -67,17 +84,15 @@ void	parse_line(t_canvas *canvas, char **array)
 		print_error("Identifiant inconnu.");
 }
 
-
 t_canvas	*get_scene_info(char *path)
 {
-	int		fd;
-	int		ret;
-	char	*line;
+	int			fd;
+	int			ret;
+	char		*line;
 	t_canvas	*canvas;
-	char	**array;
+	char		**array;
 
-	fd = open_file(path);
-	if (fd == -1)
+	if ((fd = open_file(path)) == -1)
 		return (0);
 	canvas = malloc(sizeof(t_canvas));
 	init_canvas(canvas);
@@ -87,11 +102,11 @@ t_canvas	*get_scene_info(char *path)
 		if (!check_line(line))
 			print_error("Identifiant incorrect!");
 		parse_line(canvas, array);
-		free(line);
+		free_all(line, array);
 	}
 	array = ft_split(line, ' ');
 	parse_line(canvas, array);
-	free(line);
+	free_all(line, array);
 	check_canvas(canvas);
 	close(fd);
 	return (canvas);

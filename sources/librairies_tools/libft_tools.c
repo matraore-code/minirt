@@ -6,12 +6,11 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:46:30 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/29 17:46:31 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 10:25:07 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/outils.h"
-
 
 int		ft_atoi(const char *str)
 {

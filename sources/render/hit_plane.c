@@ -6,12 +6,12 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 11:26:38 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/23 14:27:53 by matraore         ###   ########.fr       */
+/*   Updated: 2021/01/31 11:09:11 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/object.h"
-         
+
 t_plane	*new_plane(t_tuple p0, t_tuple normal)
 {
 	t_plane *plane;
