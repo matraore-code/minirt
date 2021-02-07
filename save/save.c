@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 11:40:51 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/31 10:14:43 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/06 08:16:04 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int			write_bmp(char *filename, unsigned int width,
 
 	fill_header(header);
 	fill_sizes(header, height, width);
-	fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC);
+	fd = open(filename, O_RDWR | O_CREAT | O_TRUNC, 0666);
 	write(fd, header, 54);
 	write_file(height, width, pixels, fd);
 	close(fd);

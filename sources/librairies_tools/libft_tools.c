@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:46:30 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/31 10:25:07 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/06 09:19:43 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,31 @@
 
 int		ft_atoi(const char *str)
 {
-	int		nbr;
-	int		sign;
+	int			i;
+	int			neg;
+	long long	nb;
 
-	nbr = 0;
-	sign = 1;
-	while ((*str) == '\t' || (*str) == '\n' || (*str) == '\v' || (*str) == '\f'
-			|| (*str) == '\r' || (*str) == ' ')
-		str++;
-	if ((*str) == '-' || (*str) == '+')
+	i = 0;
+	neg = 1;
+	nb = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign *= ((*str) == '-' ? -1 : 1);
-		str++;
+		if (str[i] == '-')
+			neg = -1;
+		i++;
 	}
-	while ((*str) != '\0' && (*str) >= '0' && (*str) <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		nbr *= 10;
-		nbr += (*str) - '0';
-		str++;
+		nb = nb * 10 + (str[i] - '0');
+		if (nb > 2147483648 && neg == -1)
+			return (0);
+		if (nb > 2147483648)
+			return (-1);
+		i++;
 	}
-	return (nbr * sign);
+	return (nb * neg);
 }
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)

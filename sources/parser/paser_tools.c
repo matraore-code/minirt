@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/29 17:49:09 by matraore          #+#    #+#             */
-/*   Updated: 2021/02/02 14:14:30 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/06 11:38:23 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,15 @@ void	parse_colors(t_color *result, char *field, char *errmsg)
 {
 	char **color;
 
+	handle_vir(field);
 	color = ft_split(field, ',');
 	if (line_fields(color) != 3)
 		print_error(errmsg);
 	if (checker_color(color[0]))
 		result->r = (double)ft_atoi(color[0]) / 256;
-	if (checker_color(color[0]))
+	if (checker_color(color[1]))
 		result->g = (double)ft_atoi(color[1]) / 256;
-	if (checker_color(color[0]))
+	if (checker_color(color[2]))
 		result->b = (double)ft_atoi(color[2]) / 256;
 	free_d_str(color);
 }
@@ -54,6 +55,7 @@ void	parse_coords(t_tuple *point, char *field, char *errmsg)
 {
 	char **coords;
 
+	handle_vir(field);
 	coords = ft_split(field, ',');
 	if (line_fields(coords) != 3)
 		print_error(errmsg);

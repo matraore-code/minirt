@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:31:28 by matraore          #+#    #+#             */
-/*   Updated: 2021/01/31 11:59:13 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/06 10:28:41 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ t_color				color_coeff(t_color a, double coeff);
 t_color				from_rgb(int r, int g, int b);
 t_color				from_rgb(int r, int g, int b);
 int					to_int(t_color a);
+char				*ft_strchr(const char *s, int c);
+char				**replace_tab_split(char *str);
+char				**ft_split(char const *s, char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:31:38 by matraore          #+#    #+#             */
-/*   Updated: 2021/02/02 14:08:20 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/06 11:59:19 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ typedef struct		s_canvas
 	t_color			ambient_color;
 	t_list			*cameras;
 	int				selected_camera;
+	int				count_res;
+	int				count_ambi;
 }					t_canvas;
 
 t_canvas			*get_scene_info(char *path);
@@ -96,5 +98,6 @@ int					check_line(char *line);
 void				free_all(char *line, char **array);
 void				free_d_str(char **array);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+void				handle_vir(char *array);
 
 #endif

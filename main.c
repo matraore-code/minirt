@@ -6,11 +6,20 @@
 /*   By: matraore <matraore@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 11:12:49 by matraore          #+#    #+#             */
-/*   Updated: 2021/02/02 14:09:32 by matraore         ###   ########.fr       */
+/*   Updated: 2021/02/06 10:36:20 by matraore         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/minirt.h"
+
+void	check_filepath(char **argv)
+{
+	char	*filepath;
+	
+	filepath = argv[1] + ft_strlen(argv[1]) - 4;
+	if (ft_strlen(argv[1]) <= 3 || *filepath == '/')
+		print_error("Ce fichier est un fichier masque");
+}
 
 void	intialize_mlx(char *filepath, int save)
 {
@@ -42,11 +51,12 @@ int		main(int argc, char **argv)
 {
 	char	*filepath;
 
-	filepath = argv[1] + ft_strlen(argv[1]) - 3;
 	if (argc < 2 || argc > 3)
 		print_error("Arguments invalides");
 	else
 	{
+		filepath = argv[1] + ft_strlen(argv[1]) - 3;
+		check_filepath(argv);
 		if (ft_strncmp(filepath, ".rt", ft_strlen(filepath)) == 0)
 		{
 			if (argc == 2)
